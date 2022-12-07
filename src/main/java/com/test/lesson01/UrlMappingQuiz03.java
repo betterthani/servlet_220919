@@ -27,5 +27,7 @@ public class UrlMappingQuiz03 extends HttpServlet{
 		out.print("<p>기사 입력 시간 :" + sdf.format(now) + "</p>");
 		out.print(" <hr>끝");
 		out.print("</body></html>");
+		
+		// 테스트용 주석 추가
 	}
 }
