@@ -28,6 +28,6 @@ public class UrlMappingQuiz03 extends HttpServlet{
 		out.print(" <hr>끝");
 		out.print("</body></html>");
 		
-		// 테스트용 주석 추가
+		// 테스트용 주석 -
 	}
 }
