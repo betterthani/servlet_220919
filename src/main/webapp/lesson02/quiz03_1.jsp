@@ -14,14 +14,14 @@
 </head>
 <body>
 	<%
-		double BMI = 0;
-		String result;
 		
 		double height = Double.parseDouble(request.getParameter("height"));
-		double weigth = Double.parseDouble(request.getParameter("weight"));
+		double weight = Double.parseDouble(request.getParameter("weight"));
 		
-		BMI = weigth / ((height / 100.0) * (height / 100.0));
+		double BMI = weight / ((height / 100.0) * (height / 100.0));
+		// out.print(BMI); -> 중간 확인용
 		
+		String result;
 		if(BMI >= 31){
 			result = "비만";
 		} else if(BMI >= 26){
@@ -35,11 +35,9 @@
 	%>
 	
 	<div class="container">
-		<div>
-			<h1><b>BMI 측정 결과</b></h1>
-			<p class="display-3">당신은 <span class="text-info"><%=result %></span> 입니다.</p>
-			<p>BMI 수치 :<%=BMI %></p>
-		</div>
+		<h1><b>BMI 측정 결과</b></h1>
+		<p class="display-3">당신은 <span class="text-info"><%=result %></span> 입니다.</p>
+		<p>BMI 수치 :<%=BMI %></p>
 		
 	</div>
 	
