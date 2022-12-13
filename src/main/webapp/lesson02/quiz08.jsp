@@ -82,8 +82,8 @@
 				%>
 				<tr>
 					<td><%= books.get("id") %></td>
-					<td><img alt="책이름" src="<%= books.get("image") %>" width="50px" height="70px"> </td>
-					<td><a href="/lesson02/quiz08_1.jsp?type=title"><%= books.get("title") %></a></td>
+					<td><img alt="표지" src="<%= books.get("image") %>" width="50px"> </td>
+					<td><a href="/lesson02/quiz08_1.jsp?id=<%= books.get("id")%>"><%= books.get("title") %></a></td>
 				</tr>
 				<%
 				}
