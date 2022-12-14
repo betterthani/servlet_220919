@@ -3,5 +3,5 @@
 	
 	
 <footer class="d-flex justify-content-center align-items-center">
-	<div>Copyright 2021. marondal All Rights Reserved.</div>
+	<small>Copyright 2021. marondal All Rights Reserved.</small>
 </footer>

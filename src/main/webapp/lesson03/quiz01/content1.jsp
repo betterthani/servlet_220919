@@ -141,24 +141,19 @@ String getCategory = request.getParameter("category");
 String whole = "전체";
 
 for (Map<String, String> channel : list) {
-	if(getCategory == null || getCategory.equals(whole)){
+	// getCategory 가 null 일때 (전체) 또는 카테고리명이 일치할때
+	if(getCategory == null || channel.get("category").equals(getCategory)){
 %>
-<tr>
-	<td><%=channel.get("ch")%></td>
-	<td><%=channel.get("name")%></td>
-	<td><%=channel.get("category")%></td>
-</tr>
-<%
-	} else if(channel.get("category").equals(getCategory)){
-		
-%>
-<tr>
-	<td><%=channel.get("ch")%></td>
-	<td><%=channel.get("name")%></td>
-	<td><%=channel.get("category")%></td>
-</tr>
-<%
 
-	}
+<tr>
+	<td><%=channel.get("ch")%></td>
+	<td><%=channel.get("name")%></td>
+	<td><%=channel.get("category")%></td>
+</tr>
+
+<%
+	} 
+		
 }
 %>
+
