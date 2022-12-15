@@ -80,26 +80,49 @@
     musicInfo.put("lyricist", "아이유");
     musicList.add(musicInfo);
     
-    String search = request.getParameter("search");
-    String title = request.getParameter("title");
-    
 %>
 
-<%--가수 정보 --%>
+<%
+	
+    //	상세 정보를 보여줄 target map세팅
+	Map<String, Object> target = null;
+     
+    // 1. 목록에서 클릭한 경우(id값) - a href 태그
+    if(request.getParameter("id") != null){
+	    int id = Integer.parseInt(request.getParameter("id"));
+	    for (Map<String, Object> item :musicList){
+	    	if((int)item.get("id") == id) {
+	    		target = item;
+	    		break;
+	    	}
+	    }
+    }
+     
+    // 2. 상단에서 검색한 경우 (search) - form태그
+	if (request.getParameter("search") != null){
+		String search = request.getParameter("search");
+		for(Map<String, Object> item : musicList) {
+			if(item.get("title").equals(search)) {
+				target = item;
+				break; // 동일 이름이 발생하더라도 하나의 값만 보여주게 한다.
+			}
+		}
+		
+	}
+%>
+
+<%
+	if(target != null) {
+%>
+	
+<%--곡 정보 --%>
 <div class="up h-25 d-flex pt-3 border border-success">
 	<div class="ml-1">
-	<%
-	for (Map<String, Object> music : musicList) {
-    	
-		if(music.get("title").equals(search) || music.get("title").equals(title)){
-			
-		
-	%>
-		<img alt="아이유" src="<%=music.get("thumbnail")%>" width="150px">
+		<img alt="앨범 이미지" src="<%=target.get("thumbnail")%>" width="150px">
 	</div>
 	<div class="ml-3">
-		<h1><%=music.get("title")%></h1>
-		<div><span class="text-success font-weight-bold"><%=music.get("singer")%></span></div>
+		<h1><%=target.get("title")%></h1>
+		<div><span class="text-success font-weight-bold"><%=target.get("singer")%></span></div>
 		<div class="box d-flex pt-2 text-secondary">
 			<div>
 				<small>앨범</small><br>
@@ -108,28 +131,35 @@
 				<small>작사가</small>
 			</div>
 			<div class="pl-3">
-				<small><%=music.get("album")%></small><br>
+				<small><%=target.get("album")%></small><br>
 				<%
-				int time = (int)music.get("time");
+				int time = (int)target.get("time");
 				int min = time / 60;
 				int sec = time % 60;
-				
 				%>
 				<small><%=min + " : " + sec%></small><br>
-				<small><%=music.get("composer")%></small><br>
-				<small><%=music.get("lyricist")%></small>
+				<small><%=target.get("composer")%></small><br>
+				<small><%=target.get("lyricist")%></small>
 			</div>
 		</div>
-	<%
-		}
-	}
-	%>
 	</div>
 </div>
 
-<%--곡 정보 --%>
+<%--가사 정보 --%>
 <div class="down h-25">
 	<h5 class="font-weight-bold pt-2">가사</h5>
 	<hr>
-	<div class="font-weight-bold">가사 정보 없음</div>
+	<div>가사 정보 없음</div>
 </div>
+
+<%
+	} // -- target null 아닌지 체크 끝
+	else {
+%>
+
+<h1>정보 없음</h1>
+
+<%
+
+	} // -- target이 없을 때 끝
+%>
