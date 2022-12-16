@@ -24,16 +24,16 @@ public class Ex01 extends HttpServlet{
 		ms.connect(); // 실질적인 DB연결 (꼭 넣어야 함)
 		
 		// DB insert 한 행
-		String insertQuery = "insert into `used_goods`"
-				+ "(`sellerId`, `title`, `description`, `price`)"
-				+ "values"
-				+ "(1, '고양이 간식 팝니다.', '저희 고양이가 입맛이 까다로워서 잘 안 먹어요ㅠ', 2000)";
+//		String insertQuery = "insert into `used_goods`"
+//				+ "(`sellerId`, `title`, `description`, `price`)"
+//				+ "values"
+//				+ "(1, '고양이 간식 팝니다.', '저희 고양이가 입맛이 까다로워서 잘 안 먹어요ㅠ', 2000)";
 		
-		try {
-			ms.update(insertQuery);
-		} catch (SQLException e1) {
-			e1.printStackTrace();
-		}
+//		try {
+//			ms.update(insertQuery);
+//		} catch (SQLException e1) {
+//			e1.printStackTrace();
+//		}
 		
 		// DB select & 결과 출력
 		PrintWriter out = response.getWriter();
